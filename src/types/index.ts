@@ -4,16 +4,25 @@ export interface Course {
   code: string;
   instructor: string;
   credits: number;
-  capacity: number;
-  enrolled: number;
+  description: string;
+  department: string;
+  year: number;
+  required: boolean;
+  semester: string;
   schedule: {
     day: string;
     period: number;
   }[];
-  description: string;
-  year: number;
-  type: '必修' | '選択必修' | '選択';
-  department: string;
+  capacity: number;
+  enrolled: number;
+}
+
+export type DayOfWeek = '月' | '火' | '水' | '木' | '金';
+export type Period = 1 | 2 | 3 | 4 | 5;
+
+export interface TimeSlot {
+  day: DayOfWeek;
+  period: Period;
 }
 
 export interface Student {
@@ -31,6 +40,6 @@ export interface RegistrationPeriod {
 
 export interface FilterOptions {
   year: number | null;
-  type: ('必修' | '選択必修' | '選択') | null;
+  required: boolean | null;
   department: string | null;
 } 
